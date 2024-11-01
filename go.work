@@ -2,5 +2,5 @@ go 1.23.2
 
 use (
 	.
-	../cosmos-sdk/sdk-dev/simapp/v2
+	../cosmos-sdk/main/simapp/v2
 )

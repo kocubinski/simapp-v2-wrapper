@@ -4,10 +4,12 @@ This small go module shows how one might wrap simapp/v2 for testing with an alte
 
 The line below in `go.work` should be edited to point to the location of simapp/v2 on your local machine.
 
+The commit referenced for testing was `5b7fc8ae90a74f9ed66a7391caa760046dace373`.
+
 ```golang
 use (
     .
-    ../cosmos-sdk/sdk-dev/simapp/v2
+    ../cosmos-sdk/main/simapp/v2
 )
 ```
 
@@ -15,6 +17,6 @@ use (
 
 ```bash
 go build -o notsimd main.go
-SIMD_BIN=./notsimd ../cosmos-sdk/sdk-dev/scripts/init-simapp-v2.sh
+SIMD_BIN=./notsimd ../cosmos-sdk/main/scripts/init-simapp-v2.sh
 ./notsimd start
 ```
