@@ -8,6 +8,7 @@ import (
 
 	cmtcfg "github.com/cometbft/cometbft/config"
 	"github.com/spf13/cobra"
+	"github.com/spf13/pflag"
 
 	autocliv1 "cosmossdk.io/api/cosmos/autocli/v1"
 	"cosmossdk.io/client/v2/autocli"
@@ -70,6 +71,9 @@ func newRootCmd[T transaction.Tx](
 
 	subCommand, configMap, logger, err := factory.ParseCommand(rootCommand, args)
 	if err != nil {
+		if errors.Is(err, pflag.ErrHelp) {
+			return rootCommand, nil
+		}
 		return nil, err
 	}
 
